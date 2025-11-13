@@ -1,6 +1,6 @@
 /* ===================================================
    COMPILED CSS - Odoo Challenge Mock-up
-   Generated from style.scss
+   Generated from style.scss (manual build)
    ===================================================
 */
 
@@ -17,8 +17,8 @@
 }
 
 * {
-  transition: background-color var(--transition-speed), 
-              box-shadow var(--transition-speed), 
+  transition: background-color var(--transition-speed),
+              box-shadow var(--transition-speed),
               transform var(--transition-speed),
               color var(--transition-speed);
 }
@@ -28,128 +28,269 @@ body {
   background-color: #ffffff;
   color: #1f2937;
   line-height: 1.6;
-  padding-top: 0;
 }
 
-/* --- Typography --- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   color: #111827;
 }
 
 p {
-  color: #6b7280;
+  color: #4b5563;
 }
 
 .lead {
   font-size: 1.125rem;
-  color: #d1d5db;
+  color: rgba(255, 255, 255, 0.75);
 }
 
-/* --- Navbar Styles --- */
-.navbar {
+.page-inner {
+  max-width: 1080px;
+}
+
+.section-header {
+  max-width: 640px;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.navbar-odoo {
   background-color: #0066ff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1030;
+  box-shadow: 0 2px 18px rgba(17, 24, 39, 0.18);
 }
 
-.navbar.sticky-top {
-  position: sticky;
-  top: 0;
-  width: 100%;
-}
-
-.navbar-brand {
+.navbar-odoo .navbar-brand {
   font-weight: 700;
   font-size: 1.5rem;
-  color: white !important;
+  color: #fff !important;
 }
 
-.navbar .nav-link {
-  color: rgba(255, 255, 255, 0.8) !important;
-  font-weight: 500;
+.navbar-odoo .nav-link {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 600;
   font-size: 0.95rem;
-  transition: color 0.3s ease;
 }
 
-.navbar .nav-link:hover {
-  color: white !important;
+.navbar-odoo .nav-link:hover,
+.navbar-odoo .nav-link:focus {
+  color: #fff;
 }
 
-.navbar .btn-link {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
+.navbar-odoo .btn-link {
+  color: rgba(255, 255, 255, 0.82);
 }
 
-.navbar .btn-link:hover {
-  color: white;
+.navbar-odoo .btn-link:hover,
+.navbar-odoo .btn-link:focus {
+  color: #fff;
+  text-decoration: underline;
 }
 
-.navbar .btn-light {
-  background-color: white;
+.navbar-odoo .btn-buy {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 16px rgba(13, 110, 253, 0.25);
+  background-color: #fff;
+  color: #0066ff;
+  font-weight: 600;
+  padding-inline: 1.25rem;
+}
+
+.navbar-odoo .btn-buy:hover {
+  transform: translateY(-2px);
+}
+
+.hero-section {
+  background: #0066ff;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding-block-end: 5rem;
+}
+
+.hero-section::before,
+.hero-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-section::before {
+  top: -45%;
+  right: -12%;
+  width: 32rem;
+  height: 32rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-section::after {
+  bottom: -35%;
+  left: -10%;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-section .hero-heading {
+  line-height: 1.15;
+}
+
+.hero-section .btn-play {
+  background-color: #fff;
   color: #0066ff;
   border: none;
   font-weight: 600;
 }
 
-.navbar .btn-light:hover {
-  background-color: rgba(255, 255, 255, 0.9);
+.hero-section .btn-play:hover {
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Hero Section --- */
-section.bg-primary {
+.hero-section .trusted-by {
+  gap: 1rem;
+}
+
+.hero-section .trusted-by__label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-section .trusted-by__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-section .trusted-by__logos img {
+  filter: brightness(100%);
+  opacity: 0.85;
+}
+
+.hero-section .page-inner {
   position: relative;
-  overflow: hidden;
-}
-
-section.bg-primary::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-section.bg-primary::after {
-  content: '';
-  position: absolute;
-  bottom: -20%;
-  left: -5%;
-  width: 300px;
-  height: 300px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-section.bg-primary h1 {
-  color: white;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-}
-
-section.bg-primary .btn-light:hover {
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* --- Hero Section Special Styling --- */
-.hero-section {
-  position: relative;
-  overflow: visible;
-  padding-bottom: 6rem;
+  z-index: 2;
 }
 
 .hero-card {
   border: none;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border-radius: 1rem 1rem 2.5rem 1rem;
+  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.4);
+  background-color: #fff;
+  overflow: hidden;
+  max-width: 360px;
+  margin-inline: auto;
   animation: slideInCard 0.8s ease-out;
+}
+
+.hero-card__header {
+  background-color: #fff;
+  padding: 1.5rem;
+}
+
+.hero-card__header .card-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.hero-card__header .badge-add {
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-card__credit-card {
+  background: linear-gradient(135deg, #16213e 0%, #0f3460 45%, #1a0033 100%);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 130px;
+}
+
+.hero-card__credit-card .mastercard {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.hero-card__credit-card .mastercard span {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-card__credit-card .mastercard span:first-child {
+  background: #ff5f00;
+}
+
+.hero-card__credit-card .mastercard span:last-child {
+  background: #ffb81c;
+  margin-left: -0.7rem;
+}
+
+.hero-card__credit-card .card-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-card__credit-card .card-number {
+  font-family: "Courier New", monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+}
+
+.hero-card__credit-card .card-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hero-card__body {
+  background-color: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+.hero-card__body .transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-block: 0.75rem;
+}
+
+.hero-card__body .transaction-item:not(:last-child) {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.hero-card__body .transaction-item h6 {
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.hero-card__body .transaction-item small {
+  color: #64748b;
 }
 
 @keyframes slideInCard {
@@ -163,356 +304,328 @@ section.bg-primary .btn-light:hover {
   }
 }
 
-.hero-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* --- Card Mockup Styles --- */
-.card {
-  border: none;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.fade-in.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+.section-badge {
+  background-color: #0066ff;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.35rem 1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }
 
-.card .card-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.section-badge.is-warning {
+  background-color: #ffc107;
+  color: #0b2340;
 }
 
-.card .card-body {
-  padding: 1.5rem;
+.section-badge.is-success {
+  background-color: #28a745;
+  color: #fff;
 }
 
-/* --- Award Boxes (Clickable with Hover Effect) --- */
-.award-box {
-  display: block;
-  background: white;
-  border: 2px solid transparent;
-  border-radius: 0.75rem;
-  padding: 1.5rem !important;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
+.tools-section {
   position: relative;
-  overflow: hidden;
 }
 
-.award-box::before {
-  content: '';
+.tools-section .tools-stage {
+  min-height: 260px;
+}
+
+.tools-section .copy-column {
+  position: relative;
+  z-index: 2;
+}
+
+.tools-section .tools-card {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+  background-color: #fff;
+  padding: 1.75rem;
+}
+
+.tools-section .tools-card li {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.tools-section .progress-soft {
+  background: #f1f5f9;
+  border-radius: 999px;
+  height: 6px;
+}
+
+.tools-section .progress-soft .progress-bar {
+  background: #ffc107;
+  border-radius: 999px;
+}
+
+.tools-section .tools-image {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
+  top: -2.5rem;
+  right: -1.5rem;
+  width: min(240px, 45vw);
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
 }
 
-.award-box:hover {
-  transform: translateY(-8px) scale(1.05);
-  border-color: #0066ff;
-  box-shadow: 0 12px 24px rgba(0, 102, 255, 0.25) !important;
-  color: #0066ff;
+.features-section {
+  background: #f3f6fb;
 }
 
-.award-box:hover::before {
-  left: 100%;
+.features-section .feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.award-box:hover img {
-  opacity: 0.8;
-}
-
-.award-box img {
-  transition: opacity 0.3s ease;
-}
-
-.award-box h6 {
+.features-section .feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #1f2937;
+  font-weight: 500;
   margin-bottom: 0.5rem;
-  font-weight: 700;
 }
 
-/* --- Page content constraint (centered layout with larger side gutters) --- */
-/* This narrows the default Bootstrap container slightly so page content has
-   more breathing room on large screens and appears centered with left/right gaps */
-.page-inner {
-  max-width: 1180px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+.features-section .feature-list i {
+  color: #10b981;
 }
 
-@media (min-width: 1200px) {
-  .page-inner {
-    padding-left: 0;
-    padding-right: 0;
-  }
+.technology-section .card {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.1);
+  background-color: #fff;
 }
 
-/* Small helper: vertically center hero inner content on large screens */
-@media (min-width: 992px) {
-  .hero-section .page-inner {
-    display: flex;
-    align-items: center;
-  }
-  .hero-section .row {
+.technology-section .tech-stack {
+  gap: 1.5rem;
+}
+
+.technology-section .tech-portrait {
+  width: 320px;
+  max-width: 100%;
+  overflow: hidden;
+  height: 220px;
+}
+
+.technology-section .tech-portrait img {
+  height: 100%;
+}
+
+.technology-section .tech-review {
+  width: 220px;
+  margin-left: 2.5rem;
+}
+
+@media (max-width: 575.98px) {
+  .technology-section .tech-review {
+    margin-left: 0;
     width: 100%;
   }
 }
 
-.award-box small {
-  font-size: 0.8rem;
+.technology-section .review-logo {
+  height: 28px;
 }
 
-/* --- Section Backgrounds --- */
-section.bg-light {
-  background-color: #f9fafb !important;
+.technology-section .tech-mini {
+  gap: 1rem;
 }
 
-section.bg-white {
-  background-color: white;
+.technology-section .tech-card {
+  min-width: 150px;
+  flex: 1 1 150px;
 }
 
-section.bg-dark {
-  background-color: #0b2340;
+.technology-section .avatar-initials {
+  width: 44px;
+  height: 44px;
 }
 
-section.bg-dark h2, 
-section.bg-dark h3, 
-section.bg-dark h4, 
-section.bg-dark h5, 
-section.bg-dark h6 {
-  color: white;
+.technology-section .avatar-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0066ff, #0054d1);
 }
 
-section.bg-dark p, 
-section.bg-dark a {
+.download-section {
+  background: #f3f6fb;
+}
+
+.download-section .store-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.download-section .store-buttons .btn {
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+}
+
+.infinite-section {
+  background: #fff;
+}
+
+.infinite-section .btn {
+  border-radius: 999px;
+  padding-inline: 1.5rem;
+}
+
+.awards-section {
+  background: #f3f6fb;
+}
+
+.awards-section .award-grid {
+  --bs-gutter-x: 1rem;
+  --bs-gutter-y: 1rem;
+}
+
+.awards-section .award-box {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  background-color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  height: 100%;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.awards-section .award-box small {
+  color: #6b7280;
+}
+
+.awards-section .award-box:hover,
+.awards-section .award-box:focus {
+  transform: translateY(-6px);
+  border-color: rgba(13, 110, 253, 0.25);
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.18);
+}
+
+.awards-section .award-box.is-active {
+  border-color: #0066ff;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.accordion-answers .accordion-button {
+  font-weight: 600;
+  font-size: 1rem;
+  gap: 0.75rem;
+}
+
+.accordion-answers .accordion-button:not(.collapsed) {
+  color: #0066ff;
+  background-color: rgba(0, 102, 255, 0.08);
+  box-shadow: none;
+}
+
+.accordion-answers .accordion-button::after {
+  filter: invert(43%) sepia(52%) saturate(4207%) hue-rotate(207deg) brightness(97%) contrast(101%);
+}
+
+.cta-section {
+  background: #f3f6fb;
+}
+
+.cta-section .btn {
+  border-radius: 999px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+}
+
+.cta-section .btn-outline-primary {
+  border-width: 2px;
+}
+
+.solutions-section {
+  background: #0b2340;
+}
+
+.solutions-section .btn {
+  border-radius: 999px;
+}
+
+.site-footer {
+  background: #0b2340;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-footer .text-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.site-footer a {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* --- Accordion Styles --- */
-.accordion {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
-  overflow: hidden;
+.site-footer a:hover {
+  color: #fff;
 }
 
-.accordion .accordion-item {
-  border: none;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.accordion .accordion-item:last-child {
-  border-bottom: none;
-}
-
-.accordion .accordion-button {
-  background-color: white;
-  color: #1f2937;
-  border: none;
-  font-weight: 600;
-  padding: 1.25rem;
-}
-
-.accordion .accordion-button:not(.collapsed) {
-  background-color: #f3f4f6;
-  color: #0066ff;
-  box-shadow: none;
-  border-bottom: 2px solid #0066ff;
-}
-
-.accordion .accordion-button:hover {
-  background-color: #f9fafb;
-  color: #0066ff;
-}
-
-.accordion .accordion-button::after {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%230066ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-}
-
-.accordion .accordion-body {
-  padding: 1.25rem;
-  background-color: white;
-  color: #6b7280;
-  line-height: 1.7;
-}
-
-/* --- Buttons --- */
-.btn {
-  border-radius: 0.5rem;
-  font-weight: 600;
-  padding: 0.6rem 1.5rem;
-  transition: all 0.3s ease-in-out;
-  border: 2px solid transparent;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.btn.btn-primary {
-  background-color: #0066ff;
-  color: white;
-  border-color: #0066ff;
-}
-
-.btn.btn-primary:hover {
-  background-color: #0052cc;
-  border-color: #0052cc;
-}
-
-.btn.btn-outline-primary {
-  color: #0066ff;
-  border-color: #0066ff;
-}
-
-.btn.btn-outline-primary:hover {
-  background-color: #0066ff;
-  border-color: #0066ff;
-  color: white;
-}
-
-.btn.btn-light {
-  background-color: white;
-  color: #0066ff;
-}
-
-.btn.btn-light:hover {
-  background-color: #f8f9fa;
-  color: #0066ff;
-}
-
-.btn.btn-dark {
-  background-color: #1f2937;
-  color: white;
-}
-
-.btn.btn-dark:hover {
-  background-color: #111827;
-}
-
-.btn.btn-lg {
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-}
-
-/* --- Badge Styles --- */
-.badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.badge.bg-success {
-  background-color: #10b981 !important;
-}
-
-.badge.bg-warning {
-  background-color: #f59e0b !important;
-  color: white;
-}
-
-.badge.bg-info {
-  background-color: #3b82f6 !important;
-}
-
-.badge.bg-danger {
-  background-color: #ef4444 !important;
-}
-
-/* --- Images --- */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* --- Footer --- */
-footer {
-  background-color: #0b2340;
-  color: #d1d5db;
-}
-
-footer a {
-  color: #9ca3af;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-footer hr {
-  border-color: #374151;
-}
-
-footer .social-links a {
-  font-size: 1.25rem;
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.75rem;
+@media (max-width: 991.98px) {
+  .hero-card {
+    margin-top: 1.5rem;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  .tools-section .tools-image {
+    position: static;
+    width: 100%;
+    margin-top: 1.5rem;
   }
 
-  .card {
-    max-width: 100%;
-  }
-
-  .award-box {
-    padding: 1rem !important;
-  }
-
-  .award-box:hover {
-    transform: translateY(-4px) scale(1.02);
-  }
-
-  .navbar {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-  section {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-  }
-}
-
-@media (max-width: 576px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
-  .btn {
+  .navbar-odoo .btn-buy {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
+}
 
-  .award-box {
-    padding: 0.75rem !important;
+@media (max-width: 767.98px) {
+  .hero-section {
+    text-align: center;
   }
 
-  .award-box:hover {
-    transform: translateY(-2px) scale(1.01);
+  .hero-section .trusted-by {
+    justify-content: center;
+  }
+
+  .tools-section .tools-card {
+    text-align: left;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-section {
+    padding-block: 3rem;
+  }
+
+  .hero-section .hero-heading {
+    font-size: 2.5rem;
+  }
+
+  .hero-card {
+    max-width: 320px;
+  }
+
+  .awards-section .award-box {
+    padding: 1.25rem;
   }
 }
