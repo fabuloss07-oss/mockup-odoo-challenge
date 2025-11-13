@@ -208,6 +208,7 @@ p {
 
   .hero-heading {
     line-height: 1.15;
+    color: #fff;
   }
 
   .btn-play {
@@ -247,6 +248,18 @@ p {
 .hero-section .page-inner {
   position: relative;
   z-index: 2;
+}
+
+.hero-divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -5vw;
+  height: clamp(120px, 18vw, 220px);
+  background: #fff;
+  transform: skewY(-5deg);
+  transform-origin: 0 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-card {
@@ -392,9 +405,14 @@ p {
 // --- Tools section ---
 .tools-section {
   position: relative;
+  margin-top: clamp(-160px, -14vw, -96px);
+  padding-top: clamp(5rem, 14vw, 7rem);
 
   .tools-stage {
-    min-height: 260px;
+    min-height: 320px;
+    padding: 1rem 1.5rem 4.5rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.2) 100%);
+    border-radius: $border-radius-xl;
   }
 
   .copy-column {
@@ -405,6 +423,8 @@ p {
   .tools-card {
     @include elevated-card(0 12px 30px rgba(17, 24, 39, 0.08));
     padding: 1.75rem;
+    position: relative;
+    z-index: 2;
 
     li {
       font-weight: 600;
@@ -425,11 +445,39 @@ p {
 
   .tools-image {
     position: absolute;
-    top: -2.5rem;
-    right: -1.5rem;
-    width: min(240px, 45vw);
+    top: -3rem;
+    right: -2rem;
+    width: min(260px, 48vw);
     border-radius: $border-radius-lg;
     box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+    z-index: 1;
+  }
+
+  .tools-card-floating {
+    @include elevated-card(0 20px 45px rgba(15, 23, 42, 0.16));
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: #fffbe6;
+    border-radius: $border-radius-lg;
+    z-index: 3;
+
+    .badge {
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  .tools-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ffd43b 0%, #f59e0b 100%);
+    color: #111827;
+    font-size: 1.25rem;
   }
 }
 
@@ -646,6 +694,11 @@ p {
     .tools-image {
       position: static;
       width: 100%;
+      margin-top: map.get($spacers, 3);
+    }
+
+    .tools-card-floating {
+      position: static;
       margin-top: map.get($spacers, 3);
     }
   }

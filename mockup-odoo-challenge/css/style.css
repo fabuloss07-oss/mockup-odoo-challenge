@@ -141,6 +141,7 @@ p {
 
 .hero-section .hero-heading {
   line-height: 1.15;
+  color: #fff;
 }
 
 .hero-section .btn-play {
@@ -179,6 +180,18 @@ p {
 .hero-section .page-inner {
   position: relative;
   z-index: 2;
+}
+
+.hero-divider {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -5vw;
+  height: clamp(120px, 18vw, 220px);
+  background: #fff;
+  transform: skewY(-5deg);
+  transform-origin: 0 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-card {
@@ -338,10 +351,15 @@ p {
 
 .tools-section {
   position: relative;
+  margin-top: clamp(-160px, -14vw, -96px);
+  padding-top: clamp(5rem, 14vw, 7rem);
 }
 
 .tools-section .tools-stage {
-  min-height: 260px;
+  min-height: 320px;
+  padding: 1rem 1.5rem 4.5rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.2) 100%);
+  border-radius: 2.5rem;
 }
 
 .tools-section .copy-column {
@@ -355,6 +373,8 @@ p {
   box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
   background-color: #fff;
   padding: 1.75rem;
+  position: relative;
+  z-index: 2;
 }
 
 .tools-section .tools-card li {
@@ -375,11 +395,41 @@ p {
 
 .tools-section .tools-image {
   position: absolute;
-  top: -2.5rem;
-  right: -1.5rem;
-  width: min(240px, 45vw);
+  top: -3rem;
+  right: -2rem;
+  width: min(260px, 48vw);
   border-radius: 1.5rem;
   box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+  z-index: 1;
+}
+
+.tools-section .tools-card-floating {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16);
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #fffbe6;
+  z-index: 3;
+}
+
+.tools-section .tools-card-floating .badge {
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.tools-section .tools-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #ffd43b 0%, #f59e0b 100%);
+  color: #111827;
+  font-size: 1.25rem;
 }
 
 .features-section {
@@ -591,6 +641,12 @@ p {
     width: 100%;
     margin-top: 1.5rem;
   }
+
+  .tools-section .tools-card-floating {
+    position: static;
+    margin-top: 1.5rem;
+  }
+}
 
   .navbar-odoo .btn-buy {
     padding: 0.5rem 1rem;
