@@ -20,10 +20,10 @@
        NAVBAR - Responsive with hamburger menu
        ===================================================== -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-odoo sticky-top">
       <div class="container page-inner">
-        <a class="navbar-brand fw-bold" href="#home" style="font-size: 1.3rem;">
-          <img src="img/odoo-white.svg" alt="Odoo" height="32" style="display: inline-block;">
+        <a class="navbar-brand fw-bold" href="#home">
+          <img src="img/odoo-white.svg" alt="Odoo" height="32">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -44,8 +44,8 @@
 
         <!-- Right-side buttons -->
         <div class="d-flex align-items-center gap-2 ms-3">
-          <button class="btn btn-link text-white text-decoration-none">Sign in</button>
-          <button class="btn btn-light">
+          <button class="btn btn-link text-decoration-none">Sign in</button>
+          <button class="btn btn-light btn-buy">
             <i class="bi bi-bag-plus-fill me-2"></i>Buy now
           </button>
         </div>
@@ -56,21 +56,21 @@
   <!-- =====================================================
        HERO SECTION - Main headline with card mockup
        ===================================================== -->
-  <section id="home" class="hero-section bg-primary text-white py-5 position-relative" style="padding-bottom: 12rem;">
+  <section id="home" class="hero-section py-5 position-relative">
     <div class="container page-inner py-lg-5">
       <div class="row align-items-center">
         <!-- Left column: Headline and CTA -->
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <h1 class="display-4 fw-bold mb-3" style="line-height: 1.2;">Development<br>done right</h1>
+          <h1 class="display-4 fw-bold mb-3 hero-heading">Development<br>done right</h1>
           <p class="lead mb-4">Build a beautiful, modern website with flexible components built from scratch.</p>
-          <button class="btn btn-light btn-lg mb-4">
+          <button class="btn btn-light btn-lg mb-4 btn-play">
             <i class="bi bi-play-fill me-2"></i>Get started
           </button>
-          
+
           <!-- Trusted by section -->
-          <div class="mt-5 d-flex align-items-center gap-3 flex-wrap">
-            <span class="small fw-bold text-white-50">Trusted by:</span>
-            <div class="d-flex gap-4 align-items-center">
+          <div class="mt-5 d-flex align-items-center flex-wrap trusted-by">
+            <span class="small trusted-by__label">Trusted by:</span>
+            <div class="trusted-by__logos">
               <img src="img/google-white.svg" alt="Google" height="26">
               <img src="img/spotify-white.svg" alt="Spotify" height="26">
               <img src="img/airbnb-white.svg" alt="Airbnb" height="26">
@@ -81,90 +81,93 @@
 
         <!-- Right column: Card mockup -->
         <div class="col-lg-6 d-flex justify-content-center">
-          <div class="card shadow-lg hero-card align-self-center" style="width: 100%; max-width: 360px; border-radius: 0.75rem 0.75rem 2.25rem 0.75rem; overflow: hidden; margin: 0 auto;">
+          <div class="card hero-card align-self-center w-100">
             <!-- Card Header with white background -->
-            <div style="background: white; padding: 1.25rem 1.5rem;">
+            <div class="hero-card__header">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="small fw-bold text-dark" style="font-size: 0.85rem;">Manage cards</span>
-                <span class="badge" style="background-color: #10b981; color: white; font-size: 0.6rem; padding: 0.35rem 0.6rem; text-transform: uppercase; font-weight: 700;">Add new</span>
+                <span class="small fw-bold text-dark card-subtitle">Manage cards</span>
+                <span class="badge badge-add">Add new</span>
               </div>
-              
+
               <!-- Credit Card Display - Mastercard Style -->
-              <div style="background: linear-gradient(135deg, #16213e 0%, #0f3460 50%, #1a0033 100%); border-radius: 0.5rem; padding: 1.25rem 1.5rem; color: white; position: relative; overflow: hidden; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
-                
+              <div class="hero-card__credit-card">
+
                 <!-- Top row: Just Mastercard circles on the right -->
-                <div class="d-flex justify-content-between align-items-flex-start">
+                <div class="d-flex justify-content-between align-items-start">
                   <div></div>
-                  <!-- Mastercard Circles -->
-                  <div style="position: relative; width: 52px; height: 36px; flex-shrink: 0;">
-                    <div style="position: absolute; top: 0; right: 13px; width: 36px; height: 36px; background: #FF5F00; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></div>
-                    <div style="position: absolute; top: 0; right: 0; width: 36px; height: 36px; background: #FFB81C; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></div>
+                  <div class="mastercard">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                   </div>
                 </div>
-                
+
                 <!-- Card Number -->
                 <div>
-                  <div class="small text-white-50" style="font-size: 0.6rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.4rem; font-weight: 500;">Card number</div>
-                  <div style="font-size: 1.05rem; font-weight: 700; letter-spacing: 2px; font-family: 'Courier New', monospace; line-height: 1.2;">4358 · 7421 · 9256 · 6682</div>
+                  <div class="small card-label">Card number</div>
+                  <div class="card-number">4358 · 7421 · 9256 · 6682</div>
                 </div>
-                
+
                 <!-- Card Holder and Expiry -->
-                <div class="d-flex justify-content-between" style="gap: 1.5rem;">
+                <div class="d-flex justify-content-between gap-4">
                   <div>
-                    <div class="small text-white-50" style="font-size: 0.6rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.2rem; font-weight: 500;">Name</div>
-                    <div style="font-size: 0.8rem; font-weight: 600;">John Snow</div>
+                    <div class="small card-label">Name</div>
+                    <div class="card-value">John Snow</div>
                   </div>
                   <div>
-                    <div class="small text-white-50" style="font-size: 0.6rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.2rem; font-weight: 500;">Expiry date</div>
-                    <div style="font-size: 0.8rem; font-weight: 600;">11/23</div>
+                    <div class="small card-label">Expiry date</div>
+                    <div class="card-value">11/23</div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <!-- Card Body - Transactions -->
-            <div style="background: white; padding: 1.25rem 1.5rem; border-top: 1px solid #e5e7eb;">
+            <div class="hero-card__body">
               <!-- Starbucks Transaction -->
-              <div class="mb-2" style="padding-bottom: 0.75rem; border-bottom: 1px solid #f0f0f0;">
-                <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 0.3rem;">
-                  <h6 class="mb-0" style="font-size: 0.9rem; font-weight: 700; color: #111827;">Starbucks</h6>
-                  <small class="fw-bold" style="color: #0b2340; font-size: 0.9rem;">$5.50 USD</small>
+              <div class="transaction-item">
+                <div>
+                  <h6 class="mb-1">Starbucks</h6>
+                  <small>Pending · San Francisco, United States</small>
                 </div>
-                <small class="text-muted" style="font-size: 0.75rem; display: block; color: #6b7280;">Pending · San Francisco, United States</small>
+                <small class="fw-bold text-dark">$5.50 USD</small>
               </div>
-              
+
               <!-- Nike Sports Transaction -->
-              <div class="mb-3" style="padding-top: 0.75rem;">
-                <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 0.3rem;">
-                  <h6 class="mb-0" style="font-size: 0.9rem; font-weight: 700; color: #111827;">Nike Sports</h6>
-                  <small class="fw-bold" style="color: #0b2340; font-size: 0.9rem;">$129.00 USD</small>
+              <div class="transaction-item">
+                <div>
+                  <h6 class="mb-1">Nike Sports</h6>
+                  <small>Pending · Lisbon, Portugal</small>
                 </div>
-                <small class="text-muted" style="font-size: 0.75rem; display: block; color: #6b7280;">Pending · Lisbon, Portugal</small>
+                <small class="fw-bold text-dark">$129.00 USD</small>
               </div>
-              
+
               <!-- View all link -->
-              <a href="#" class="text-primary fw-bold text-decoration-none" style="font-size: 0.85rem;">View all <i class="bi bi-arrow-right ms-1" style="font-size: 0.75rem;"></i></a>
+              <a href="#" class="text-primary fw-bold text-decoration-none">View all <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-  <!-- Diagonal bottom edge -->
-  <div style="position: absolute; bottom: -60px; left: 0; right: 0; height: 180px; background: white; clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);"></div>
+
+    <!-- Notes on the mock-up -->
+    <!--
+      What works well: the contrasty hero and modular content blocks make the page easy to scan.
+      Improvement ideas: swap a few inline styles for reusable classes, tighten the awards grid alignment,
+      and increase color consistency between sections.
+    -->
   </section>
 
   <!-- =====================================================
        TOOLS SECTION (card on the left with overlapping image)
        ===================================================== -->
-  <section id="tools" class="py-5 bg-white position-relative">
+  <section id="tools" class="py-5 bg-white position-relative tools-section">
     <div class="container page-inner">
       <div class="row align-items-center">
         <!-- Left: white rounded card with list and overlapping image -->
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <div class="position-relative" style="min-height: 260px;">
+          <div class="position-relative tools-stage">
             <!-- white card -->
-            <div class="bg-white rounded-3 shadow-sm" style="padding: 1.5rem; border-radius: 1rem;">
+            <div class="bg-white rounded-3 tools-card">
               <h5 class="fw-bold mb-3">Awesome projects</h5>
               <ul class="list-unstyled small mb-0">
                 <li class="mb-3">
@@ -172,8 +175,8 @@
                     <span>Create the new logo</span>
                     <small class="text-muted">—</small>
                   </div>
-                  <div class="progress mt-2" style="height:6px; background:#f1f5f9;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width:45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress progress-soft mt-2" role="presentation">
+                    <div class="progress-bar" role="progressbar" style="width:45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li class="mb-3">
@@ -181,8 +184,8 @@
                     <span>Set up the color palette</span>
                     <small class="text-muted">—</small>
                   </div>
-                  <div class="progress mt-2" style="height:6px; background:#f1f5f9;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width:65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress progress-soft mt-2" role="presentation">
+                    <div class="progress-bar" role="progressbar" style="width:65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li>
@@ -190,21 +193,21 @@
                     <span>Wireframe and prototype</span>
                     <small class="text-muted">6:50</small>
                   </div>
-                  <div class="progress mt-2" style="height:6px; background:#f1f5f9;">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width:90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress progress-soft mt-2" role="presentation">
+                    <div class="progress-bar" role="progressbar" style="width:90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
               </ul>
             </div>
 
             <!-- overlapping image (top-right) -->
-            <img src="img/img_01.jpg" alt="Tools" class="img-fluid rounded shadow" style="position:absolute; top:-36px; right:-18px; width:240px; height:auto; border-radius:0.75rem; box-shadow:0 12px 30px rgba(17,24,39,0.12); z-index:1;">
+            <img src="img/img_01.jpg" alt="Tools" class="img-fluid rounded shadow tools-image">
           </div>
         </div>
 
         <!-- Right: text -->
-        <div class="col-lg-6" style="position: relative; z-index: 2;">
-          <span class="badge bg-warning text-dark mb-3">Tools</span>
+        <div class="col-lg-6 copy-column">
+          <span class="section-badge is-warning mb-3">Tools</span>
           <h2 class="fw-bold mb-3">We build for designers and developers</h2>
           <p class="text-muted mb-4">Get components and examples, including tons of variables that will help you grow your business.</p>
           <a href="#" class="text-primary text-decoration-none">Wireframe and prototype <i class="bi bi-arrow-right ms-2"></i></a>
@@ -216,19 +219,19 @@
   <!-- =====================================================
        FEATURES SECTION
        ===================================================== -->
-  <section id="features" class="py-5 bg-light">
+  <section id="features" class="py-5 features-section">
     <div class="container page-inner">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
           <img src="img/img_02.jpg" alt="Features" class="img-fluid rounded" height="300">
         </div>
         <div class="col-lg-6 order-lg-1">
-          <span class="badge" style="background-color: #10b981; color: white; box-shadow: none;">Features</span>
+          <span class="section-badge is-success mb-3">Features</span>
           <h2 class="fw-bold mb-3">Get components and examples, including tons of variables that will help you grow your business.</h2>
           <p class="text-muted">Perfect for modern startups</p>
-          <ul class="list-unstyled">
-            <li class="mb-2"><i class="bi bi-check-square-fill" style="color: #10b981; font-size: 1rem; vertical-align: -0.1rem;" aria-hidden="true"></i><span class="ms-2">Fully customizable and scalable</span></li>
-            <li><i class="bi bi-check-square-fill" style="color: #10b981; font-size: 1rem; vertical-align: -0.1rem;" aria-hidden="true"></i><span class="ms-2">Built with modern technologies</span></li>
+          <ul class="feature-list">
+            <li><i class="bi bi-check-square-fill" aria-hidden="true"></i><span>Fully customizable and scalable</span></li>
+            <li><i class="bi bi-check-square-fill" aria-hidden="true"></i><span>Built with modern technologies</span></li>
           </ul>
         </div>
       </div>
@@ -238,21 +241,21 @@
   <!-- =====================================================
        TECHNOLOGY SECTION (stacked cards on the left)
        ===================================================== -->
-  <section id="technology" class="py-5 bg-white">
+  <section id="technology" class="py-5 bg-white technology-section">
     <div class="container">
       <div class="row align-items-center">
         <!-- Left: stacked cards -->
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <div class="d-flex flex-column align-items-start" style="gap: 1rem;">
+          <div class="d-flex flex-column align-items-start gap-4 tech-stack">
             <!-- Top-left portrait card -->
-            <div class="card border-0 shadow-sm" style="width: 320px; border-radius: 0.75rem; overflow: hidden;">
-              <img src="img/person_01.jpg" alt="Person" class="img-fluid" style="height:220px; width:100%; object-fit:cover; display:block;">
+            <div class="card tech-portrait">
+              <img src="img/person_01.jpg" alt="Portrait" class="img-fluid w-100 h-100 object-fit-cover">
             </div>
 
             <!-- Top-right review card (slightly shifted right) -->
-            <div class="card border-0 shadow-sm" style="width: 220px; margin-left: 40px; border-radius: 0.75rem;">
+            <div class="card tech-review">
               <div class="card-body text-center py-4">
-                <img src="img/airbnb.svg" alt="airbnb" style="height:28px;" class="mb-2">
+                <img src="img/airbnb.svg" alt="airbnb" class="mb-2 review-logo">
                 <div class="mb-2">
                   <span class="me-1 text-warning">★ ★ ★ ★ ☆</span>
                 </div>
@@ -261,10 +264,10 @@
             </div>
 
             <!-- Bottom row: two small cards -->
-            <div class="d-flex" style="gap: 1rem;">
-              <div class="card border-0 shadow-sm" style="min-width: 150px; border-radius: 0.75rem;">
+            <div class="d-flex gap-3 flex-wrap tech-mini">
+              <div class="card tech-card">
                 <div class="card-body d-flex align-items-center gap-3 py-3">
-                  <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center" style="width:44px;height:44px;">JH</div>
+                  <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center avatar-initials">JH</div>
                   <div>
                     <div class="small fw-bold">Jimmy Hendrix</div>
                     <div class="small text-muted">Built to be customized.</div>
@@ -272,9 +275,9 @@
                 </div>
               </div>
 
-              <div class="card border-0 shadow-sm" style="min-width: 150px; border-radius: 0.75rem;">
+              <div class="card tech-card">
                 <div class="card-body text-center py-3">
-                  <div style="width:44px;height:44px;border-radius:50%;background:#0b2340;display:inline-block;margin-bottom:.5rem;"></div>
+                  <div class="avatar-dot d-inline-block mb-2"></div>
                   <div class="small fw-bold">Website UI Kit</div>
                 </div>
               </div>
@@ -284,7 +287,7 @@
 
         <!-- Right: copy -->
         <div class="col-lg-6">
-          <span class="badge" style="background-color: #0d6efd; color: white;">Technology</span>
+          <span class="section-badge mb-3">Technology</span>
           <h2 class="fw-bold mb-3">We use the latest technologies on the market</h2>
           <p class="text-muted mb-4">Get components and examples, including tons of variables that will help you grow your business.</p>
           <a href="#" class="text-primary text-decoration-none">See case studies <i class="bi bi-arrow-right ms-2"></i></a>
@@ -296,17 +299,17 @@
   <!-- =====================================================
        DOWNLOAD SECTION
        ===================================================== -->
-  <section class="py-5 bg-light">
+  <section class="py-5 download-section">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
           <img src="img/company_01.png" alt="Download" class="img-fluid rounded" height="300">
         </div>
         <div class="col-lg-6 order-lg-1">
-          <span class="badge bg-warning text-dark mb-3">Easy to install</span>
+          <span class="section-badge is-warning mb-3">Easy to install</span>
           <h2 class="fw-bold mb-3">Download, install and run.</h2>
           <p class="text-muted mb-4">Get components and examples, including tons of variables that will help you grow your business.</p>
-          <div class="d-flex gap-3">
+          <div class="store-buttons">
             <a href="#" class="btn btn-dark"><i class="bi bi-apple me-2"></i>App Store</a>
             <a href="#" class="btn btn-dark"><i class="bi bi-google-play me-2"></i>Play Store</a>
           </div>
@@ -318,11 +321,11 @@
   <!-- =====================================================
        INFINITE SOLUTIONS SECTION
        ===================================================== -->
-  <section class="py-5 bg-white">
+  <section class="py-5 bg-white infinite-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
-          <span class="badge bg-primary mb-3">Infinite</span>
+          <span class="section-badge mb-3">Infinite</span>
           <h2 class="fw-bold mb-3">Infinite solutions</h2>
           <p class="text-muted mb-4">Intuitive markup, powerful and lightning-fast build tools, everything you need to turn your ideas into incredible products.</p>
           <a href="#" class="btn btn-primary">Learn more</a>
@@ -334,45 +337,45 @@
   <!-- =====================================================
        AWARDS SECTION - Clickable boxes with hover effect
        ===================================================== -->
-  <section id="awards" class="py-5 bg-light">
+  <section id="awards" class="py-5 awards-section">
     <div class="container">
-      <span class="badge bg-success mb-3">Awards</span>
+      <span class="section-badge is-success mb-3">Awards</span>
       <h2 class="fw-bold mb-3">Awards for design, creativity, and innovation on the Internet</h2>
       <p class="text-muted mb-4">4.95 out of 5 stars from 23 reviews</p>
       <p class="mb-4">They build modern-looking websites easily using Tabs.</p>
-      
+
       <!-- 5 Award Boxes -->
-      <div class="row g-3 mb-4">
-        <div class="col-6 col-md-2">
-          <a href="#" class="award-box d-block p-4 bg-white rounded shadow-sm text-center text-decoration-none h-100">
+      <div class="row row-cols-2 row-cols-md-5 award-grid mb-4">
+        <div class="col">
+          <a href="#" class="award-box d-block text-decoration-none" data-award="Amazon">
             <img src="img/amazon.svg" alt="Amazon" height="40" class="mb-3">
             <h6 class="mb-0">Amazon</h6>
             <small class="text-muted">4.95 out of 5 stars</small>
           </a>
         </div>
-        <div class="col-6 col-md-2">
-          <a href="#" class="award-box d-block p-4 bg-white rounded shadow-sm text-center text-decoration-none h-100">
+        <div class="col">
+          <a href="#" class="award-box d-block text-decoration-none" data-award="Airbnb">
             <img src="img/airbnb.svg" alt="Airbnb" height="40" class="mb-3">
             <h6 class="mb-0">Airbnb</h6>
             <small class="text-muted">4.95 out of 5 stars</small>
           </a>
         </div>
-        <div class="col-6 col-md-2">
-          <a href="#" class="award-box d-block p-4 bg-white rounded shadow-sm text-center text-decoration-none h-100">
+        <div class="col">
+          <a href="#" class="award-box d-block text-decoration-none" data-award="Spotify">
             <img src="img/spotify.svg" alt="Spotify" height="40" class="mb-3">
             <h6 class="mb-0">Spotify</h6>
             <small class="text-muted">4.95 out of 5 stars</small>
           </a>
         </div>
-        <div class="col-6 col-md-2">
-          <a href="#" class="award-box d-block p-4 bg-white rounded shadow-sm text-center text-decoration-none h-100">
+        <div class="col">
+          <a href="#" class="award-box d-block text-decoration-none" data-award="Slack">
             <img src="img/slack.svg" alt="Slack" height="40" class="mb-3">
             <h6 class="mb-0">Slack</h6>
             <small class="text-muted">4.95 out of 5 stars</small>
           </a>
         </div>
-        <div class="col-6 col-md-2">
-          <a href="#" class="award-box d-block p-4 bg-white rounded shadow-sm text-center text-decoration-none h-100">
+        <div class="col">
+          <a href="#" class="award-box d-block text-decoration-none" data-award="PayPal">
             <img src="img/paypal.svg" alt="PayPal" height="40" class="mb-3">
             <h6 class="mb-0">PayPal</h6>
             <small class="text-muted">4.95 out of 5 stars</small>
@@ -387,11 +390,11 @@
   <!-- =====================================================
        HELPFUL ANSWERS SECTION - Accordion (functional)
        ===================================================== -->
-  <section class="py-5 bg-white">
+  <section class="py-5 bg-white accordion-answers">
     <div class="container">
       <h2 class="fw-bold mb-2 text-center">Helpful answers</h2>
       <p class="text-muted text-center mb-4">Start building fast, beautiful, and modern-looking websites in no time.</p>
-      
+
       <!-- Accordion with 6 FAQs -->
       <div class="row">
         <div class="col-lg-10 mx-auto">
@@ -488,7 +491,7 @@
   <!-- =====================================================
        CTA SECTION
        ===================================================== -->
-  <section class="py-5 bg-light">
+  <section class="py-5 cta-section">
     <div class="container text-center">
       <h2 class="fw-bold mb-4">I want to start a new project</h2>
       <div class="d-flex gap-3 justify-content-center flex-wrap">
@@ -501,7 +504,7 @@
   <!-- =====================================================
        SOLUTIONS SECTION - Dark background
        ===================================================== -->
-  <section class="py-5 bg-dark text-white">
+  <section class="py-5 text-white solutions-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
@@ -516,7 +519,7 @@
   <!-- =====================================================
        FOOTER
        ===================================================== -->
-  <footer class="bg-dark text-white py-5">
+  <footer class="site-footer text-white py-5">
     <div class="container">
       <!-- Footer content -->
       <div class="row mb-4">

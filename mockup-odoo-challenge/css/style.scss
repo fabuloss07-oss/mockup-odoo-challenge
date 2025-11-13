@@ -3,6 +3,8 @@
 // Using Bootstrap 5.3 variables and customization
 // ===================================================
 
+@use "sass:map";
+
 // --- Bootstrap Variable Overrides ---
 $primary: #0066ff;
 $secondary: #6c757d;
@@ -13,7 +15,14 @@ $info: #17a2b8;
 $light: #f8f9fa;
 $dark: #0b2340;
 
-// Spacing map
+// Additional helpers
+$section-backgrounds: (
+  "hero": $primary,
+  "muted": #f3f6fb,
+  "light": $light,
+  "dark": $dark
+);
+
 $spacers: (
   0: 0,
   1: 0.25rem,
@@ -28,12 +37,10 @@ $spacers: (
   10: 7rem
 );
 
-// Border radius
-$border-radius: 0.5rem;
-$border-radius-lg: 1rem;
-$border-radius-xl: 1.5rem;
+$border-radius: 0.75rem;
+$border-radius-lg: 1.5rem;
+$border-radius-xl: 2.5rem;
 
-// Theme colors map
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
@@ -45,7 +52,34 @@ $theme-colors: (
   "dark": $dark
 );
 
-// --- Global Styles ---
+// --- Mixins ---
+@mixin badge-variant($color-key) {
+  $badge-color: map.get($theme-colors, $color-key);
+  background-color: $badge-color;
+  color: if($color-key == "warning", $dark, #fff);
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.35rem 1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+@mixin elevated-card($shadow: 0 20px 60px rgba(15, 23, 42, 0.18)) {
+  border: none;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow;
+  background-color: #fff;
+}
+
+@mixin soft-transition {
+  transition: background-color var(--transition-speed),
+              box-shadow var(--transition-speed),
+              transform var(--transition-speed),
+              color var(--transition-speed);
+}
+
+// --- Global styles ---
 :root {
   --bs-primary: #{$primary};
   --bs-secondary: #{$secondary};
@@ -59,10 +93,7 @@ $theme-colors: (
 }
 
 * {
-  transition: background-color var(--transition-speed), 
-              box-shadow var(--transition-speed), 
-              transform var(--transition-speed),
-              color var(--transition-speed);
+  @include soft-transition;
 }
 
 body {
@@ -72,425 +103,587 @@ body {
   line-height: 1.6;
 }
 
-// --- Typography ---
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #111827;
 }
 
 p {
-  color: #6b7280;
+  color: #4b5563;
 }
 
 .lead {
   font-size: 1.125rem;
-  color: #d1d5db;
+  color: rgba(#fff, 0.75);
 }
 
-// --- Navbar Styles ---
-.navbar {
-  background-color: $primary;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.page-inner {
+  max-width: 1080px;
+}
+
+.section-header {
+  max-width: 640px;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+// --- Navbar ---
+.navbar-odoo {
+  background-color: map.get($theme-colors, "primary");
+  box-shadow: 0 2px 18px rgba(17, 24, 39, 0.18);
 
   .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
-    color: white !important;
+    color: #fff !important;
   }
 
   .nav-link {
-    color: rgba(255, 255, 255, 0.8) !important;
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 600;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
 
-    &:hover {
-      color: white !important;
+    &:hover,
+    &:focus {
+      color: #fff;
     }
   }
 
   .btn-link {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
+    color: rgba(255, 255, 255, 0.82);
 
-    &:hover {
-      color: white;
-    }
-  }
-
-  .btn-light {
-    background-color: white;
-    color: $primary;
-    border: none;
-    font-weight: 600;
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.9);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-  }
-}
-
-// --- Hero Section ---
-section.bg-primary {
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    left: -5%;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  h1 {
-    color: white;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-
-  .btn-light {
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-  }
-}
-
-// --- Card Mockup Styles ---
-.card {
-  border: none;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
-  }
-
-  .card-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
-
-  .card-body {
-    padding: 1.5rem;
-  }
-}
-
-// --- Award Boxes (Clickable with Hover Effect) ---
-.award-box {
-  display: block;
-  background: white;
-  border: 2px solid transparent;
-  border-radius: 0.75rem;
-  padding: 1.5rem !important;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-
-  // Pseudo-element for animation
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-  }
-
-  &:hover {
-    // Scale up
-    transform: translateY(-8px) scale(1.05);
-    // Add border color
-    border-color: $primary;
-    // Enhanced shadow
-    box-shadow: 0 12px 24px rgba(0, 102, 255, 0.25) !important;
-    // Change text color
-    color: $primary;
-
-    &::before {
-      left: 100%;
-    }
-
-    img {
-      opacity: 0.8;
-    }
-  }
-
-  img {
-    transition: opacity 0.3s ease;
-  }
-
-  h6 {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-  }
-
-  small {
-    font-size: 0.8rem;
-  }
-}
-
-// --- Section Backgrounds ---
-section.bg-light {
-  background-color: #f9fafb !important;
-}
-
-section.bg-white {
-  background-color: white;
-}
-
-section.bg-dark {
-  background-color: $dark;
-
-  h2, h3, h4, h5, h6 {
-    color: white;
-  }
-
-  p, a {
-    color: rgba(255, 255, 255, 0.8);
-  }
-}
-
-// --- Accordion Styles ---
-.accordion {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
-  overflow: hidden;
-
-  .accordion-item {
-    border: none;
-    border-bottom: 1px solid #e5e7eb;
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  .accordion-button {
-    background-color: white;
-    color: #1f2937;
-    border: none;
-    font-weight: 600;
-    padding: 1.25rem;
-
-    &:not(.collapsed) {
-      background-color: #f3f4f6;
-      color: $primary;
-      box-shadow: none;
-      border-bottom: 2px solid $primary;
-    }
-
-    &:hover {
-      background-color: #f9fafb;
-      color: $primary;
-    }
-
-    &::after {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%230066ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-    }
-  }
-
-  .accordion-body {
-    padding: 1.25rem;
-    background-color: white;
-    color: #6b7280;
-    line-height: 1.7;
-  }
-}
-
-// --- Buttons ---
-.btn {
-  border-radius: 0.5rem;
-  font-weight: 600;
-  padding: 0.6rem 1.5rem;
-  transition: all 0.3s ease-in-out;
-  border: 2px solid transparent;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  &.btn-primary {
-    background-color: $primary;
-    color: white;
-    border-color: $primary;
-
-    &:hover {
-      background-color: darken($primary, 10%);
-      border-color: darken($primary, 10%);
-    }
-  }
-
-  &.btn-outline-primary {
-    color: $primary;
-    border-color: $primary;
-
-    &:hover {
-      background-color: $primary;
-      border-color: $primary;
-      color: white;
-    }
-  }
-
-  &.btn-light {
-    background-color: white;
-    color: $primary;
-
-    &:hover {
-      background-color: $light;
-      color: $primary;
-    }
-  }
-
-  &.btn-dark {
-    background-color: #1f2937;
-    color: white;
-
-    &:hover {
-      background-color: #111827;
-    }
-  }
-
-  &.btn-lg {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-  }
-}
-
-// --- Badge Styles ---
-.badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-
-  &.bg-success {
-    background-color: #10b981 !important;
-  }
-
-  &.bg-warning {
-    background-color: #f59e0b !important;
-    color: white;
-  }
-
-  &.bg-info {
-    background-color: #3b82f6 !important;
-  }
-
-  &.bg-danger {
-    background-color: #ef4444 !important;
-  }
-}
-
-// --- Images ---
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-// --- Footer ---
-footer {
-  background-color: $dark;
-  color: #d1d5db;
-
-  a {
-    color: #9ca3af;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: white;
+    &:hover,
+    &:focus {
+      color: #fff;
       text-decoration: underline;
     }
   }
 
-  hr {
-    border-color: #374151;
-  }
+  .btn-buy {
+    @include elevated-card(0 8px 16px rgba(13, 110, 253, 0.25));
+    background-color: #fff;
+    color: map.get($theme-colors, "primary");
+    font-weight: 600;
+    padding-inline: 1.25rem;
 
-  .social-links a {
-    font-size: 1.25rem;
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 }
 
-// --- Responsive Design ---
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.75rem;
+// --- Hero ---
+.hero-section {
+  background: map.get($section-backgrounds, "hero");
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding-block-end: map.get($spacers, 8);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  &::before {
+    top: -45%;
+    right: -12%;
+    width: 32rem;
+    height: 32rem;
+    background: rgba(255, 255, 255, 0.08);
   }
 
-  .card {
-    max-width: 100%;
+  &::after {
+    bottom: -35%;
+    left: -10%;
+    width: 20rem;
+    height: 20rem;
+    background: rgba(255, 255, 255, 0.04);
   }
 
-  .award-box {
-    padding: 1rem !important;
+  .hero-heading {
+    line-height: 1.15;
+  }
+
+  .btn-play {
+    background-color: #fff;
+    color: map.get($theme-colors, "primary");
+    border: none;
+    font-weight: 600;
 
     &:hover {
-      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+      transform: translateY(-2px);
     }
   }
 
-  .navbar {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
+  .trusted-by {
+    gap: map.get($spacers, 3);
 
-  section {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
+    &__label {
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    &__logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: map.get($spacers, 3);
+
+      img {
+        filter: brightness(100);
+        opacity: 0.85;
+      }
+    }
   }
 }
 
-@media (max-width: 576px) {
-  h1 {
-    font-size: 1.5rem;
+.hero-section .page-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-card {
+  @include elevated-card(0 25px 70px rgba(15, 23, 42, 0.4));
+  border-radius: 1rem 1rem 2.5rem 1rem;
+  overflow: hidden;
+  max-width: 360px;
+  margin-inline: auto;
+  animation: slideInCard 0.8s ease-out;
+
+  &__header {
+    background-color: #fff;
+    padding: 1.5rem;
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .badge-add {
+      @include badge-variant("success");
+      font-size: 0.65rem;
+      padding-inline: 0.75rem;
+    }
   }
 
-  h2 {
-    font-size: 1.25rem;
+  &__credit-card {
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 45%, #1a0033 100%);
+    border-radius: $border-radius;
+    padding: 1.25rem 1.5rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spacers, 2);
+    min-height: 130px;
+
+    .mastercard {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.4rem;
+
+      span {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+        &:first-child {
+          background: #ff5f00;
+        }
+
+        &:last-child {
+          background: #ffb81c;
+          margin-left: -0.7rem;
+        }
+      }
+    }
+
+    .card-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(#fff, 0.65);
+    }
+
+    .card-number {
+      font-family: "Courier New", monospace;
+      font-size: 1.05rem;
+      letter-spacing: 0.18em;
+    }
+
+    .card-value {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
   }
+
+  &__body {
+    background-color: #fff;
+    border-top: 1px solid #e5e7eb;
+    padding: 1.5rem;
+
+    .transaction-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: map.get($spacers, 2);
+      padding-block: 0.75rem;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      h6 {
+        font-size: 0.95rem;
+        color: #111827;
+      }
+
+      small {
+        color: #64748b;
+      }
+    }
+  }
+}
+
+@keyframes slideInCard {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Section badges ---
+.section-badge {
+  @include badge-variant("primary");
+
+  &.is-warning {
+    @include badge-variant("warning");
+  }
+
+  &.is-success {
+    @include badge-variant("success");
+  }
+}
+
+// --- Tools section ---
+.tools-section {
+  position: relative;
+
+  .tools-stage {
+    min-height: 260px;
+  }
+
+  .copy-column {
+    position: relative;
+    z-index: 2;
+  }
+
+  .tools-card {
+    @include elevated-card(0 12px 30px rgba(17, 24, 39, 0.08));
+    padding: 1.75rem;
+
+    li {
+      font-weight: 600;
+      color: #1f2937;
+    }
+  }
+
+  .progress-soft {
+    background: #f1f5f9;
+    border-radius: 999px;
+    height: 6px;
+
+    .progress-bar {
+      background: map.get($theme-colors, "warning");
+      border-radius: inherit;
+    }
+  }
+
+  .tools-image {
+    position: absolute;
+    top: -2.5rem;
+    right: -1.5rem;
+    width: min(240px, 45vw);
+    border-radius: $border-radius-lg;
+    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+  }
+}
+
+// --- Features ---
+.features-section {
+  background: map.get($section-backgrounds, "muted");
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: #1f2937;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+
+      i {
+        color: #10b981;
+      }
+    }
+  }
+}
+
+// --- Technology ---
+.technology-section {
+  .card {
+    @include elevated-card(0 10px 35px rgba(15, 23, 42, 0.1));
+  }
+
+  .tech-stack {
+    gap: 1.5rem;
+  }
+
+  .tech-portrait {
+    width: 320px;
+    max-width: 100%;
+    overflow: hidden;
+    height: 220px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .tech-review {
+    width: 220px;
+    margin-left: 2.5rem;
+
+    @media (max-width: 575.98px) {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  .review-logo {
+    height: 28px;
+  }
+
+  .tech-mini {
+    gap: 1rem;
+  }
+
+  .tech-card {
+    min-width: 150px;
+    flex: 1 1 150px;
+  }
+
+  .avatar-initials {
+    width: 44px;
+    height: 44px;
+  }
+
+  .avatar-dot {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, map.get($theme-colors, "primary"), darken(map.get($theme-colors, "primary"), 10%));
+  }
+}
+
+// --- Download ---
+.download-section {
+  background: map.get($section-backgrounds, "muted");
+
+  .store-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: map.get($spacers, 3);
+
+    .btn {
+      border-radius: 999px;
+      font-weight: 600;
+      padding: 0.75rem 1.75rem;
+    }
+  }
+}
+
+// --- Infinite ---
+.infinite-section {
+  background: #fff;
 
   .btn {
+    border-radius: 999px;
+    padding-inline: 1.5rem;
+  }
+}
+
+// --- Awards ---
+.awards-section {
+  background: map.get($section-backgrounds, "muted");
+
+  .award-grid {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+  }
+
+  .award-box {
+    @include elevated-card(0 12px 24px rgba(15, 23, 42, 0.12));
+    text-align: center;
+    padding: 1.5rem;
+    height: 100%;
+    text-decoration: none;
+    border: 1px solid transparent;
+
+    small {
+      color: #6b7280;
+    }
+
+    &:hover,
+    &:focus {
+      transform: translateY(-6px);
+      border-color: rgba(13, 110, 253, 0.25);
+      box-shadow: 0 24px 40px rgba(15, 23, 42, 0.18);
+    }
+
+    &.is-active {
+      border-color: map.get($theme-colors, "primary");
+      box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+    }
+  }
+}
+
+// --- Helpful answers ---
+.accordion-answers {
+  .accordion-button {
+    font-weight: 600;
+    font-size: 1rem;
+    gap: 0.75rem;
+
+    &:not(.collapsed) {
+      color: map.get($theme-colors, "primary");
+      background-color: rgba(0, 102, 255, 0.08);
+      box-shadow: none;
+    }
+
+    &::after {
+      filter: invert(43%) sepia(52%) saturate(4207%) hue-rotate(207deg) brightness(97%) contrast(101%);
+    }
+  }
+}
+
+// --- CTA ---
+.cta-section {
+  background: map.get($section-backgrounds, "muted");
+
+  .btn {
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+  }
+
+  .btn-outline-primary {
+    border-width: 2px;
+  }
+}
+
+// --- Solutions ---
+.solutions-section {
+  background: map.get($section-backgrounds, "dark");
+
+  .btn {
+    border-radius: 999px;
+  }
+}
+
+// --- Footer ---
+.site-footer {
+  background: map.get($section-backgrounds, "dark");
+  color: rgba(255, 255, 255, 0.85);
+
+  .text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+// --- Responsive tweaks ---
+@media (max-width: 991.98px) {
+  .hero-card {
+    margin-top: map.get($spacers, 4);
+  }
+
+  .tools-section {
+    .tools-image {
+      position: static;
+      width: 100%;
+      margin-top: map.get($spacers, 3);
+    }
+  }
+
+  .navbar-odoo .btn-buy {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
+}
 
-  .award-box {
-    padding: 0.75rem !important;
+@media (max-width: 767.98px) {
+  .hero-section {
+    text-align: center;
 
-    &:hover {
-      transform: translateY(-2px) scale(1.01);
+    .trusted-by {
+      justify-content: center;
     }
+  }
+
+  .tools-section .tools-card {
+    text-align: left;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-section {
+    padding-block: map.get($spacers, 5);
+
+    .hero-heading {
+      font-size: 2.5rem;
+    }
+  }
+
+  .hero-card {
+    max-width: 320px;
+  }
+
+  .awards-section .award-box {
+    padding: 1.25rem;
   }
 }
