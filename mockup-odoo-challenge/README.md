@@ -158,6 +158,27 @@ This project converts the Odoo mock-up design into a fully functional, responsiv
 - Implement actual contact form with validation
 - Add newsletter subscription
 - Implement product configurator
+
+## ✅ How to Review the Latest Changes
+
+### 1. Accepting the Update in GitHub
+- Visit the pull request that contains the refreshed layout.
+- Inspect the "Files changed" tab to double-check the diff.
+- If everything looks good, click **Merge pull request**, then **Confirm merge** to accept it.
+- Delete the branch from the PR page after merging if prompted (this keeps the repository tidy).
+
+### 2. Previewing the Page Locally
+- Make sure you have a local clone of the repository: `git clone <repo-url>`.
+- Pull the latest changes from the default branch: `git pull origin main` (or the branch you merged).
+- Open `index.html` directly in your browser, or serve the folder with a lightweight server such as:
+  - `npx serve .`
+  - `python3 -m http.server`
+- Visit `http://localhost:8000` (or the URL shown in your terminal) to preview the page.
+- Resize the browser window to confirm the responsive behavior on mobile vs. desktop breakpoints.
+
+### 3. Previewing Without a Local Environment
+- From the PR page, click the **View deployment** link if your repository is wired to GitHub Pages or another hosting service.
+- Alternatively, upload the repository to a static host (e.g., Netlify, GitHub Pages) and point it to `index.html`.
 - Add live chat widget
 
 ### 10. **Backend Integration**

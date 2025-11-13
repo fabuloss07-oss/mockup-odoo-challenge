@@ -7,10 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // === Award Box Click Handler ===
   const awardBoxes = document.querySelectorAll('.award-box');
   awardBoxes.forEach(box => {
+    box.setAttribute('role', 'button');
+    box.setAttribute('aria-pressed', 'false');
+
     box.addEventListener('click', function(e) {
       e.preventDefault();
-      console.log('Award box clicked:', this.querySelector('h6').textContent);
-      // Add custom functionality here
+      awardBoxes.forEach(item => item.classList.remove('is-active'));
+      awardBoxes.forEach(item => item.setAttribute('aria-pressed', 'false'));
+      this.classList.add('is-active');
+      this.setAttribute('aria-pressed', 'true');
+      console.log('Award box clicked:', this.dataset.award || this.querySelector('h6').textContent);
     });
   });
 
@@ -47,14 +53,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
+        entry.target.classList.add('animate');
       }
     });
   }, observerOptions);
 
   // Observe sections for animation
   const sections = document.querySelectorAll('section');
-  sections.forEach(section => observer.observe(section));
+  sections.forEach(section => {
+    section.classList.add('fade-in');
+    observer.observe(section);
+  });
 
   // === Close mobile menu on link click ===
   const navbarToggler = document.querySelector('.navbar-toggler');
